@@ -1,0 +1,1 @@
+/home/murin/.zprezto/runcoms/zlogout
