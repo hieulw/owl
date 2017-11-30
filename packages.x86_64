@@ -1,3 +1,6 @@
+# development
+#base-devel
+
 # install X
 xorg-server
 xorg-xinit
@@ -7,3 +10,6 @@ xorg-drivers
 xfce4
 xfce4-goodies
 
+# install extra applications
+custom/firefox
+#custom/pacaur
