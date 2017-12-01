@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Owl Setup
+Exec=/home/guest/.startscript
+Icon=utilities-terminal
+Type=Application
+Categories=System;Utility;
+NoDisplay=true

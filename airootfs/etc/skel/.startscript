@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+## Load configurations
+
+cd $HOME
+dconf load / < dump.dconf
+
+## Setup Prezto
+
+if [ -f "${ZDOTDIR:-$HOME}/.zlogin" ] && [ ! -f airootfs/etc/skel/.zshrc ]; then
+  rm -f "${ZDOTDIR:-$HOME}/.zlogin"
+  setopt EXTENDED_GLOB
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+fi
