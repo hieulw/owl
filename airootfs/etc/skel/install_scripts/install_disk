@@ -11,6 +11,8 @@ cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
 echo "Clean up system"
 sed -i 's/Storage=volatile/#Storage=auto/' /mnt/etc/systemd/journald.conf
+sed -i 's/#\(greeter-session=\)example-gtk-gnome/\1lightdm-webkit2-greeter/' /mnt/etc/lightdm/lightdm.conf
+sed -i 's/\(=\ \)antergos/\1matrix/' /mnt/etc/lightdm/lightdm-webkit2-greeter.conf
 
 archroot "systemctl disable pacman-init.service"
 
@@ -18,6 +20,7 @@ rm -r /mnt/etc/systemd/system/{pacman-init.service,etc-pacman.d-gnupg.mount,gett
 rm /mnt/etc/mkinitcpio-archiso.conf
 rm -r /mnt/etc/initcpio
 rm /mnt/etc/systemd/system/default.target
+rm -r /mnt/etc/skel/{install_scripts,.zprezto}
 
 genfstab /mnt >> /mnt/etc/fstab && cat /mnt/etc/fstab
 
@@ -27,8 +30,10 @@ archroot "pacman-key --init"
 archroot "pacman-key --populate archlinux"
 #archroot "systemctl disable multi-user.target"
 #archroot "systemctl enable graphical.target"
-archroot "systemctl enable lightdm NetworkManager"
+archroot "systemctl enable lightdm-plymouth NetworkManager"
 
 archroot "mkinitcpio -p linux"
+
+echo "Unmount disk"
 
 umount /mnt -R
