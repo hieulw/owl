@@ -11,7 +11,7 @@ dmraid
 #dnsmasq
 #bind-tools
 dosfstools
-#elinks
+elinks
 #ethtool
 exfat-utils
 #f2fs-tools

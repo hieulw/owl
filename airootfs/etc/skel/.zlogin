@@ -1,4 +1,3 @@
-###
-# Start X
-###
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+## Setup Prezto
+
+zsh -e $HOME/install_scripts/setup_prezto

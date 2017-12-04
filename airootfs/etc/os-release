@@ -1,9 +1,8 @@
 NAME="Owl"
 PRETTY_NAME="Owl Linux"
 ID=owl
-ID_LIKE=arch
+ID_LIKE=owlinux
 ANSI_COLOR="0;36"
 HOME_URL="https://github.com/ladyga14/owl"
-SUPPORT_URL="https://github.com/ladyga14/owl/wiki"
 BUG_REPORT_URL="https://github.com/ladyga14/owl/issues"
 

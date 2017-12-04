@@ -1,8 +1,9 @@
 # development
 base-devel
 virtualbox-guest-utils
-#virtualbox-guest-dkms
 virtualbox-guest-modules-arch
+git
+os-prober
 
 # install X
 xorg-server
@@ -11,9 +12,12 @@ xorg-drivers
 xdg-user-dirs
 
 # install Desktop Environment
-xfce4
-xfce4-goodies
+cinnamon
+lightdm
 
 # install extra applications
 custom/firefox
-#custom/pacaur
+pacaur
+plank
+osx-arc-shadow
+la-capitaine-icon-theme

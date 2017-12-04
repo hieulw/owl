@@ -1,0 +1,34 @@
+#!/bin/zsh
+
+archroot() {
+    arch-chroot /mnt /bin/zsh -c "${1}"
+}
+
+echo "Install to disk"
+cp -ax /run/archiso/sfs/airootfs/* /mnt
+cp -avT /run/archiso/bootmnt/arch/boot/$(uname -m)/vmlinuz /mnt/boot/vmlinuz-linux
+cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
+
+echo "Clean up system"
+sed -i 's/Storage=volatile/#Storage=auto/' /mnt/etc/systemd/journald.conf
+
+archroot "systemctl disable pacman-init.service"
+
+rm -r /mnt/etc/systemd/system/{pacman-init.service,etc-pacman.d-gnupg.mount,getty@tty1.service.d}
+rm /mnt/etc/mkinitcpio-archiso.conf
+rm -r /mnt/etc/initcpio
+rm /mnt/etc/systemd/system/default.target
+
+genfstab /mnt >> /mnt/etc/fstab && cat /mnt/etc/fstab
+
+echo "Start Services"
+
+archroot "pacman-key --init"
+archroot "pacman-key --populate archlinux"
+#archroot "systemctl disable multi-user.target"
+#archroot "systemctl enable graphical.target"
+archroot "systemctl enable lightdm NetworkManager"
+
+archroot "mkinitcpio -p linux"
+
+umount /mnt -R
