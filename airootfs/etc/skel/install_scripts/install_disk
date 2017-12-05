@@ -13,7 +13,11 @@ echo "Clean up system"
 sed -i 's/Storage=volatile/#Storage=auto/' /mnt/etc/systemd/journald.conf
 sed -i 's/#\(greeter-session=\)example-gtk-gnome/\1lightdm-webkit2-greeter/' /mnt/etc/lightdm/lightdm.conf
 sed -i 's/\(=\ \)antergos/\1matrix/' /mnt/etc/lightdm/lightdm-webkit2-greeter.conf
-
+sed -i 's/\(autodetect\ modconf\)/plymouth\ \1/' /mnt/etc/mkinitcpio.conf
+sed -i 's/\(quiet\)/\1\ splash/' /mnt/etc/default/grub
+sed -i 's/Arch/Owl/' /mnt/etc/default/grub
+sed -i 's/\(GRUB_DEFAULT=\)0/\1saved/' /mnt/etc/default/grub
+sed -i 's/#\(GRUB_SAVEDEFAULT\)/\1/' /mnt/etc/default/grub
 archroot "systemctl disable pacman-init.service"
 
 rm -r /mnt/etc/systemd/system/{pacman-init.service,etc-pacman.d-gnupg.mount,getty@tty1.service.d}
@@ -25,7 +29,6 @@ rm -r /mnt/etc/skel/{install_scripts,.zprezto}
 genfstab /mnt >> /mnt/etc/fstab && cat /mnt/etc/fstab
 
 echo "Start Services"
-
 archroot "pacman-key --init"
 archroot "pacman-key --populate archlinux"
 #archroot "systemctl disable multi-user.target"
