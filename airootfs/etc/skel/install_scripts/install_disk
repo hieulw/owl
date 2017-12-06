@@ -24,7 +24,7 @@ sed -i 's/\(GRUB_DEFAULT=\)0/\1saved/' /mnt/etc/default/grub
 sed -i 's/#\(GRUB_SAVEDEFAULT\)/\1/' /mnt/etc/default/grub
 sed -i 's/spinner/details/' /mnt/etc/plymouth/plymouthd.conf
 sed -i 's/#\(IgnorePkg\ \ \ =\)/\1\ firefox/' /mnt/etc/pacman.conf
-sed -i 's/\(&&\ exit\)/&&\ rm\ -rf\ $HOME/install_scripts\ \1/' /mnt/home/$username/.zlogin
+sed -i 's/\(&&\ exit\)/&&\ rm\ -rf\ $HOME\/install_scripts\ \1/' /mnt/home/$username/.zlogin
 
 archroot "systemctl disable pacman-init.service"
 
