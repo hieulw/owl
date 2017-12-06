@@ -2,17 +2,17 @@
 icon-size=48
 show-dock-item=false
 position='bottom'
-dock-items=['org.gnome.gedit.dockitem', 'firefox.dockitem', 'org.gnome.Terminal.dockitem', 'cinnamon-settings.dockitem', 'nemo.dockitem']
+dock-items=['firefox.dockitem', 'org.gnome.Terminal.dockitem', 'cinnamon-settings.dockitem', 'nemo.dockitem']
 unhide-delay=0
 items-alignment='center'
-theme='Default'
+theme='Transparent'
 hide-mode='intelligent'
 pinned-only=false
 auto-pinning=true
 alignment='center'
 zoom-percent=150
 hide-delay=0
-zoom-enabled=false
+zoom-enabled=true
 monitor=''
 lock-items=false
 tooltips-enabled=true
@@ -149,14 +149,6 @@ quit-time-delay=60
 background-color='rgb(0,0,0)'
 use-background-color=true
 
-[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
-scrollbar-policy='never'
-audible-bell=false
-
-[org/gnome/terminal/legacy]
-theme-variant='dark'
-default-show-menubar=false
-
 [org/gnome/gedit/preferences/editor]
 scheme='tango'
 wrap-last-split-mode='word'
@@ -215,7 +207,7 @@ disable-menu-warning=true
 [org/nemo/window-state]
 start-with-menu-bar=false
 start-with-sidebar=true
-geometry='720x538+310+40'
+geometry='720x538+519+50'
 start-with-status-bar=false
 maximized=false
 sidebar-bookmark-breakpoint=0
