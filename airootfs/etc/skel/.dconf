@@ -1,3 +1,25 @@
+[net/launchpad/plank/docks/dock1]
+icon-size=48
+show-dock-item=false
+position='bottom'
+dock-items=['org.gnome.gedit.dockitem', 'firefox.dockitem', 'org.gnome.Terminal.dockitem', 'cinnamon-settings.dockitem', 'nemo.dockitem']
+unhide-delay=0
+items-alignment='center'
+theme='Default'
+hide-mode='intelligent'
+pinned-only=false
+auto-pinning=true
+alignment='center'
+zoom-percent=150
+hide-delay=0
+zoom-enabled=false
+monitor=''
+lock-items=false
+tooltips-enabled=true
+pressure-reveal=false
+offset=0
+current-workspace-only=false
+
 [org/cinnamon]
 extension-cache-updated=1512302748
 desktop-effects-unmaximize-transition='easeNone'
@@ -24,7 +46,7 @@ workspace-osd-visible=false
 desktop-effects-tile-transition='easeInQuad'
 desktop-effects-maximize-effect='none'
 panels-resizable=['1:false']
-enabled-applets=['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:0:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:power@cinnamon.org:11', 'panel1:right:7:calendar@cinnamon.org:12', 'panel1:right:8:sound@cinnamon.org:13']
+enabled-applets=['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:7:sound@cinnamon.org:13']
 desktop-effects-minimize-time=200
 alttab-switcher-delay=100
 desktop-effects-tile-effect='none'
@@ -59,7 +81,6 @@ motion-threshold=1
 double-click=400
 
 [org/cinnamon/muffin]
-button-layout='close,minimize,maximize:'
 resize-threshold=24
 tile-hud-threshold=25
 
@@ -128,6 +149,36 @@ quit-time-delay=60
 background-color='rgb(0,0,0)'
 use-background-color=true
 
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+scrollbar-policy='never'
+audible-bell=false
+
+[org/gnome/terminal/legacy]
+theme-variant='dark'
+default-show-menubar=false
+
+[org/gnome/gedit/preferences/editor]
+scheme='tango'
+wrap-last-split-mode='word'
+
+[org/gnome/gedit/preferences/ui]
+show-tabs-mode='auto'
+
+[org/gnome/gedit/plugins/filebrowser]
+virtual-root='file:///home/test/.cinnamon/configs/user@cinnamon.org'
+tree-view=true
+root='file:///'
+
+[org/gnome/gedit/plugins]
+active-plugins=['modelines', 'spell', 'time', 'docinfo', 'filebrowser']
+
+[org/gnome/gedit/state/window]
+size=(900, 594)
+state=128
+bottom-panel-size=140
+side-panel-size=200
+side-panel-active-page='GeditWindowDocumentsPanel'
+
 [org/gnome/desktop/a11y/applications]
 screen-keyboard-enabled=false
 screen-reader-enabled=false
@@ -141,6 +192,9 @@ dwell-click-enabled=false
 
 [org/gnome/desktop/interface]
 toolkit-accessibility=false
+
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:close'
 
 [org/gtk/settings/file-chooser]
 sort-column='name'
@@ -156,12 +210,27 @@ location-mode='path-bar'
 
 [org/nemo/preferences]
 show-hidden-files=true
+disable-menu-warning=true
 
 [org/nemo/window-state]
+start-with-menu-bar=false
 start-with-sidebar=true
 geometry='720x538+310+40'
+start-with-status-bar=false
 maximized=false
 sidebar-bookmark-breakpoint=0
 
 [org/nemo/desktop]
+network-icon-visible=false
+home-icon-visible=false
+computer-icon-visible=false
+volumes-visible=false
 desktop-layout='false::false'
+trash-icon-visible=false
+
+[ca/desrt/dconf-editor]
+saved-view='/net/launchpad/plank/'
+show-warning=false
+window-height=594
+window-width=800
+window-is-maximized=false

@@ -4,12 +4,16 @@ archroot() {
     arch-chroot /mnt /bin/zsh -c "${1}"
 }
 
-echo "Install to disk"
-cp -ax /run/archiso/sfs/airootfs/* /mnt
-cp -avT /run/archiso/bootmnt/arch/boot/$(uname -m)/vmlinuz /mnt/boot/vmlinuz-linux
-cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
+echo "Installing to disk. Be patient..."
+time cp -ax /run/archiso/sfs/airootfs/* /mnt
+time cp -avT /run/archiso/bootmnt/arch/boot/$(uname -m)/vmlinuz /mnt/boot/vmlinuz-linux
+time cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
-echo "Clean up system"
+vared -p 'Enter new username: ' -c username
+archroot "useradd -m -g users -G wheel -s /usr/bin/zsh $username"
+archroot "passwd $username"
+
+echo "Clean up new system"
 sed -i 's/Storage=volatile/#Storage=auto/' /mnt/etc/systemd/journald.conf
 sed -i 's/#\(greeter-session=\)example-gtk-gnome/\1lightdm-webkit2-greeter/' /mnt/etc/lightdm/lightdm.conf
 sed -i 's/\(=\ \)antergos/\1matrix/' /mnt/etc/lightdm/lightdm-webkit2-greeter.conf
@@ -18,6 +22,10 @@ sed -i 's/\(quiet\)/\1\ splash/' /mnt/etc/default/grub
 sed -i 's/Arch/Owl/' /mnt/etc/default/grub
 sed -i 's/\(GRUB_DEFAULT=\)0/\1saved/' /mnt/etc/default/grub
 sed -i 's/#\(GRUB_SAVEDEFAULT\)/\1/' /mnt/etc/default/grub
+sed -i 's/spinner/details/' /mnt/etc/plymouth/plymouthd.conf
+sed -i 's/#\(IgnorePkg\ \ \ =\)/\1\ firefox/' /mnt/etc/pacman.conf
+sed -i 's/\(&&\ exit\)/&&\ rm\ -rf\ $HOME/install_scripts\ \1/' /mnt/home/$username/.zlogin
+
 archroot "systemctl disable pacman-init.service"
 
 rm -r /mnt/etc/systemd/system/{pacman-init.service,etc-pacman.d-gnupg.mount,getty@tty1.service.d}
@@ -25,6 +33,7 @@ rm /mnt/etc/mkinitcpio-archiso.conf
 rm -r /mnt/etc/initcpio
 rm /mnt/etc/systemd/system/default.target
 rm -r /mnt/etc/skel/{install_scripts,.zprezto}
+rm -rf /mnt/root/..?* /mnt/root/.[!.]* /mnt/root/* 
 
 genfstab /mnt >> /mnt/etc/fstab && cat /mnt/etc/fstab
 
