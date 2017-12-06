@@ -33,7 +33,7 @@ rm /mnt/etc/mkinitcpio-archiso.conf
 rm -r /mnt/etc/initcpio
 rm /mnt/etc/systemd/system/default.target
 rm -r /mnt/etc/skel/{install_scripts,.zprezto}
-rm -rf /mnt/root/..?* /mnt/root/.[!.]* /mnt/root/* 
+rm -rf /mnt/root/{install_scripts,install.txt}
 
 genfstab /mnt >> /mnt/etc/fstab && cat /mnt/etc/fstab
 
