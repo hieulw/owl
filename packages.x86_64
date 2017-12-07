@@ -1,7 +1,7 @@
 # development
 base-devel
-virtualbox-guest-utils
-virtualbox-guest-modules-arch
+#virtualbox-guest-utils
+#virtualbox-guest-modules-arch
 git
 os-prober
 
@@ -16,7 +16,7 @@ cinnamon
 lightdm
 lightdm-webkit2-greeter
 lightdm-webkit2-theme-matrix-git
-plymouth
+#plymouth
 
 # install extra applications
 custom/firefox
