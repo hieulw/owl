@@ -4,6 +4,8 @@ archroot() {
     arch-chroot /mnt /bin/zsh -c "${1}"
 }
 
+timedatectl set-ntp true
+
 echo "Installing to disk. Be patient..."
 time cp -ax /run/archiso/sfs/airootfs/* /mnt
 time cp -avT /run/archiso/bootmnt/arch/boot/$(uname -m)/vmlinuz /mnt/boot/vmlinuz-linux

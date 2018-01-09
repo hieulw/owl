@@ -1,7 +1,7 @@
 # development
 base-devel
-#virtualbox-guest-utils
-#virtualbox-guest-modules-arch
+virtualbox-guest-utils
+virtualbox-guest-modules-arch
 git
 os-prober
 
